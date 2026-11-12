@@ -6,7 +6,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const path = require("path");
 
-const { connectDB, sequelize } = require("./db");
+const { connectDB } = require("./db");
 
 require("./Model");
 
@@ -69,10 +69,6 @@ const PORT = process.env.PORT || process.env.PORT_NAME || 5000;
 const startServer = async () => {
     try {
         await connectDB();
-
-        await sequelize.sync({ alter: true });
-
-        console.log("Database synchronized successfully");
 
         app.listen(PORT, () => {
             console.log(`AgriFlow server running on port ${PORT}`);
