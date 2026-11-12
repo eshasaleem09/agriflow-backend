@@ -13,7 +13,6 @@ require("./Model");
 const app = express();
 
 app.use(helmet());
-
 const allowedOrigins = [
     "http://localhost:5173",
     "http://localhost:3000",
