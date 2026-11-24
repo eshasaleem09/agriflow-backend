@@ -8,8 +8,6 @@ const testConnection = async () => {
     console.log("DATABASE CONNECTED SUCCESSFULLY!");
     console.log("Database: agriflow_db");
     console.log("================================");
-
-    await sequelize.close();
   } catch (error) {
     console.error("DATABASE CONNECTION FAILED!");
     console.error("ERROR NAME:", error.name);
@@ -17,6 +15,8 @@ const testConnection = async () => {
     console.error("DATABASE ERROR:", error.parent?.message);
 
     process.exitCode = 1;
+  } finally {
+    await sequelize.close();
   }
 };
 
